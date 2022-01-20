@@ -4,8 +4,8 @@ WORKDIR /todo-app/back-end/
 
 EXPOSE 3001
 
-ADD node_modules.tar.gz todobackend
+ADD node_modules.tar.gz .
 
-COPY . todobackend
+COPY . .
 
 CMD [ "npm", "start" ]

@@ -2,9 +2,9 @@ FROM mjgargani/puppeteer:trybe1.0 AS todotests
 
 WORKDIR /todo-app/tests/
 
-ADD node_modules.tar.gz todotests
+ADD node_modules.tar.gz .
 
-COPY . todotests
+COPY . .
 
 CMD [ "npm", "test" ]
 

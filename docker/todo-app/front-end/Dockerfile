@@ -4,8 +4,8 @@ WORKDIR /todo-app/front-end/
 
 EXPOSE 3000
 
-ADD node_modules.tar.gz todofrontend
+ADD node_modules.tar.gz .
 
-COPY . todofrontend
+COPY . .
 
 CMD [ "npm", "start" ]
