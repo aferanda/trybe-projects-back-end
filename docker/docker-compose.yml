@@ -10,15 +10,15 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - "todoback"
+      - todoback
     environment:
       - REACT_APP_API_HOST=todoback
     restart: always
   todotests:
     image: todotests
     depends_on:
-      - "todofront"
-      - "todoback"
+      - todofront
+      - todoback
     environment:
       - FRONT_HOST=todofront
     restart: always
