@@ -11,9 +11,17 @@ const PORT = '3000';
 const middlewares = require('./middlewares');
 const controllers = require('./controllers');
 
-const validationMiddlewares = [
+const middlewaresLogin = [
   middlewares.validateEmail,
   middlewares.validatePassword,
+];
+
+const middlewaresTalker = [
+  middlewares.validateToken,
+  middlewares.validateName,
+  middlewares.validateAge,
+  middlewares.validateTalk,
+  middlewares.validateTalkKeys,
 ];
 
 // não remova esse endpoint, e para o avaliador funcionar
@@ -22,12 +30,12 @@ app.get('/', (_request, response) => {
 });
 
 // CREAT
-app.post('/login', 
-  validationMiddlewares, 
-  (_req, res) => {
-    const token = crypto.randomBytes(8).toString('hex');
-    return res.status(200).json({ token });
-  });
+app.post('/login', middlewaresLogin, (_req, res) => {
+  const token = crypto.randomBytes(8).toString('hex');
+  return res.status(200).json({ token });
+});
+
+app.post('/talker', middlewaresTalker, controllers.createTalker);
 
 // READ
 app.get('/talker', controllers.listTalkers);

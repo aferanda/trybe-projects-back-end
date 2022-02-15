@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
         .status(400)
         .json({ message: 'O "password" deve ter pelo menos 6 caracteres' });
     }
-    next();
+    return next();
   } catch (e) {
     return next(e);
   }
