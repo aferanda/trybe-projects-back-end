@@ -21,7 +21,9 @@ const middlewaresTalker = [
   middlewares.validateName,
   middlewares.validateAge,
   middlewares.validateTalk,
-  middlewares.validateTalkKeys,
+  middlewares.validateTalkWatched,
+  middlewares.validateTalkRate,
+  middlewares.validateDate,
 ];
 
 // não remova esse endpoint, e para o avaliador funcionar
@@ -42,6 +44,10 @@ app.get('/talker', controllers.listTalkers);
 
 app.get('/talker/:id', controllers.getTalkerById);
 
+// UPDATE
+app.put('/talker/:id', middlewaresTalker, controllers.updateTalker);
+
+// LISTEN
 app.listen(PORT, () => {
   console.log('Online');
 });
