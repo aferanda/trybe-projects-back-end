@@ -32,20 +32,45 @@ app.get('/', (_request, response) => {
 });
 
 // CREAT
-app.post('/login', middlewaresLogin, (_req, res) => {
-  const token = crypto.randomBytes(8).toString('hex');
-  return res.status(200).json({ token });
-});
+app.post(
+  '/login', 
+  middlewaresLogin, 
+  (_req, res) => {
+    const token = crypto.randomBytes(8).toString('hex');
+    return res.status(200).json({ token });
+  },
+);
 
-app.post('/talker', middlewaresTalker, controllers.createTalker);
+app.post(
+  '/talker',
+  middlewaresTalker,
+  controllers.createTalker,
+);
 
 // READ
-app.get('/talker', controllers.listTalkers);
+app.get(
+  '/talker',
+  controllers.listTalkers,
+);
 
-app.get('/talker/:id', controllers.getTalkerById);
+app.get(
+  '/talker/:id', 
+  controllers.getTalkerById,
+);
 
 // UPDATE
-app.put('/talker/:id', middlewaresTalker, controllers.updateTalker);
+app.put(
+  '/talker/:id', 
+  middlewaresTalker, 
+  controllers.updateTalker,
+);
+
+// DELETE
+app.delete(
+  '/talker/:id',
+  middlewares.validateToken,
+  controllers.deleteTalker,
+);
 
 // LISTEN
 app.listen(PORT, () => {
