@@ -54,6 +54,12 @@ app.get(
 );
 
 app.get(
+  '/talker/search', 
+  middlewares.validateToken, 
+  controllers.searchTalker,
+);
+
+app.get(
   '/talker/:id', 
   controllers.getTalkerById,
 );
