@@ -3,7 +3,6 @@ const productsControllers = require('../controllers/products.controllers');
 
 const router = express.Router();
 
-// ADICIONAR A FUNÇÃO
-router.get('/products', productsControllers);
+router.get('/', productsControllers.getAll);
 
 module.exports = router;

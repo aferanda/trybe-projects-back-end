@@ -3,7 +3,6 @@ const salesControllers = require('../controllers/sales.controllers');
 
 const router = express.Router();
 
-// ADICIONAR A FUNCAO
-router.get('/sales', salesControllers);
+router.get('/', salesControllers.getAll);
 
 module.exports = router;
