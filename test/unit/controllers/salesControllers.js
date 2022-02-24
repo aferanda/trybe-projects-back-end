@@ -5,7 +5,7 @@ const salesModels = require("../../../models/sales.models");
 const salesControllers = require("../../../controllers/sales.controllers");
 
 describe("SALES CONTROLLERS TESTS", () => {
-  describe('Ao chamar o controller de "getAll"', () => {
+  describe('1 - Ao chamar o controller de "getAll"', () => {
     const modelsResponse = [
       {
         saleId: 1,
@@ -52,8 +52,8 @@ describe("SALES CONTROLLERS TESTS", () => {
     });
   });
 
-  describe('Ao chamar o controller de "getById"', () => {
-    describe("quando não existem vendas no DB", async () => {
+  describe('2 - Ao chamar o controller de "getById"', () => {
+    describe("2.1 - quando não existem vendas no DB", async () => {
       const request = {};
       const response = {};
 
@@ -82,7 +82,7 @@ describe("SALES CONTROLLERS TESTS", () => {
       });
     });
 
-    describe("quando existem vendas no DB", async () => {
+    describe("2.2 - quando existem vendas no DB", async () => {
       const request = {};
       const response = {};
 

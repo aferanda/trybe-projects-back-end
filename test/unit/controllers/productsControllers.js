@@ -5,7 +5,7 @@ const productsModels = require("../../../models/products.models");
 const productsControllers = require("../../../controllers/products.controllers");
 
 describe("PRODUCTS CONTROLLERS TESTS", () => {
-  describe('Ao chamar o controller de "getAll"', () => {
+  describe('1 - Ao chamar o controller de "getAll"', () => {
     const modelsResponse = [
       {
         id: 1,
@@ -49,8 +49,8 @@ describe("PRODUCTS CONTROLLERS TESTS", () => {
     });
   });
 
-  describe('Ao chamar o controller de "getById"', () => {
-    describe("quando não existem produtos no DB", async () => {
+  describe('2 - Ao chamar o controller de "getById"', () => {
+    describe("2.1 - quando não existem produtos no DB", async () => {
       const request = {};
       const response = {};
 
@@ -79,7 +79,7 @@ describe("PRODUCTS CONTROLLERS TESTS", () => {
       });
     });
 
-    describe("quando existem produtos no DB", async () => {
+    describe("2.3 - quando existem produtos no DB", async () => {
       const request = {};
       const response = {};
 

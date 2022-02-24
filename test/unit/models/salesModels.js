@@ -6,7 +6,7 @@ const salesModels = require("../../../models/sales.models");
 
 describe("SALES MODELS TESTS", () => {
   describe("Busca vendas no DB", () => {
-    describe("Busca todos as vendas no DB", () => {
+    describe("1 - Busca todos as vendas no DB", () => {
       before(async () => {
         const execute = [[]];
         sinon.stub(DB, "execute").resolves(execute);
@@ -16,14 +16,14 @@ describe("SALES MODELS TESTS", () => {
         DB.execute.restore();
       });
 
-      describe("quando não existe vendas no DB", () => {
+      describe("1.1 - quando não existe vendas no DB", () => {
         it("retorna um array vazio", async () => {
           const response = await salesModels.getAll();
           expect(response).to.be.deep.equal([]);
         });
       });
 
-      describe("quando existe vendas no DB", () => {
+      describe("1.2 - quando existe vendas no DB", () => {
         const salesData = [
           {
             saleId: 1,
@@ -75,7 +75,7 @@ describe("SALES MODELS TESTS", () => {
       });
     });
 
-    describe("Busca apenas uma venda no DB por seu ID", () => {
+    describe("2 - Busca apenas uma venda no DB por seu ID", () => {
       before(async () => {
         const execute = [[]];
         sinon.stub(DB, "execute").resolves(execute);
@@ -85,14 +85,14 @@ describe("SALES MODELS TESTS", () => {
         DB.execute.restore();
       });
 
-      describe("quando não existe uma venda com o ID informado", () => {
+      describe("2.1 - quando não existe uma venda com o ID informado", () => {
         it("retorna um array vazio", async () => {
           const response = await salesModels.getById();
           expect(response).to.be.empty;
         });
       });
 
-      describe("quando existe vendas com o ID informado", () => {
+      describe("2.2 - quando existe vendas com o ID informado", () => {
         before(() => {
           sinon.stub(salesModels, "getById").resolves([
             {
