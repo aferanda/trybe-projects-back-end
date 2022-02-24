@@ -88,7 +88,7 @@ describe("SALES MODELS TESTS", () => {
       describe("quando não existe uma venda com o ID informado", () => {
         it("retorna um array vazio", async () => {
           const response = await salesModels.getById();
-          expect(response).to.be.deep.equal([]);
+          expect(response).to.be.empty;
         });
       });
 

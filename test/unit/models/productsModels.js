@@ -19,7 +19,7 @@ describe("PRODUCTS MODELS TESTS", () => {
       describe("quando não existe produtos no DB", () => {
         it("retorna um array vazio", async () => {
           const response = await productsModels.getAll();
-          expect(response).to.be.deep.equal([]);
+          expect(response).to.be.empty;
         });
       });
 
