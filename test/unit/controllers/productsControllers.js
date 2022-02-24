@@ -77,7 +77,7 @@ describe("PRODUCTS CONTROLLERS TESTS", () => {
       it('é chamado o método "json" com a mensagem "Product not found"', async () => {
         await productsControllers.getById(request, response);
 
-        expect(response.json.calledWith()).to.be.true;
+        expect(response.json.calledWith({ message: "Product not found" })).to.be.true;
       });
     });
 
