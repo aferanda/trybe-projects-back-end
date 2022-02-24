@@ -6,7 +6,7 @@ const getAll = async () => {
               FROM StoreManager.sales_products AS SProd
               INNER JOIN StoreManager.sales AS S
               ON SProd.sale_id = S.id`;
-  const sales = await DB.execute(SQL);
+  const [sales] = await DB.execute(SQL);
   return sales;
 };
 
@@ -16,7 +16,7 @@ const getById = async (id) => {
               FROM StoreManager.sales_products AS SProd
               INNER JOIN StoreManager.sales AS S
               ON SProd.sale_id = S.id WHERE SProd.sale_id = ?`;
-  const sales = await DB.execute(SQL, [id]);
+  const [sales] = await DB.execute(SQL, [id]);
   return sales;
 };
 
