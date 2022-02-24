@@ -26,19 +26,19 @@ describe("PRODUCTS MODELS TESTS", () => {
       describe("quando existe produtos no DB", () => {
         const productsData = [
           {
-            "id": 1,
-            "name": "Martelo de Thor",
-            "quantity": 10
+            id: 1,
+            name: "Martelo de Thor",
+            quantity: 10,
           },
           {
-            "id": 2,
-            "name": "Traje de encolhimento",
-            "quantity": 20
+            id: 2,
+            name: "Traje de encolhimento",
+            quantity: 20,
           },
           {
-            "id": 3,
-            "name": "Escudo do Capitão América",
-            "quantity": 30
+            id: 3,
+            name: "Escudo do Capitão América",
+            quantity: 30,
           },
         ];
 
@@ -65,7 +65,7 @@ describe("PRODUCTS MODELS TESTS", () => {
           expect(response).to.be.not.empty;
         });
 
-        it('tal array possui tamanho igual a 3', async () => {
+        it("tal array possui tamanho igual a 3", async () => {
           const item = await productsModels.getAll();
           expect(item).to.have.length(3);
         });
