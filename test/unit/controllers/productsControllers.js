@@ -53,13 +53,11 @@ describe("PRODUCTS CONTROLLERS TESTS", () => {
     describe("quando não existem produtos no DB", async () => {
       const request = {};
       const response = {};
-      let next = () => {};
 
       before(() => {
         request.params = { id: 4 };
         response.status = sinon.stub().returns(response);
         response.json = sinon.stub().returns();
-        next = sinon.stub().returns();
 
         sinon.stub(productsModels, "getById").resolves([]);
       });
