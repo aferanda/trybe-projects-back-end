@@ -89,7 +89,7 @@ describe("PRODUCTS MODELS TESTS", () => {
         });
       });
 
-      describe("quando existe um filme com o ID informado", () => {
+      describe("quando existe um produto com o ID informado", () => {
         before(() => {
           sinon.stub(productsModels, "getById").resolves({
             id: 1,
