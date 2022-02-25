@@ -8,7 +8,7 @@ router.get('/', salesControllers.getAll);
 
 router.get('/:id', salesControllers.getById);
 
-router.post('/', salesMiddleware, () => {});
+router.post('/', salesMiddleware, salesControllers.create);
 
 router.put('/', salesMiddleware, () => {});
 

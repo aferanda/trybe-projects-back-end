@@ -1,7 +1,7 @@
 const schema = require('../schemas/sales');
 
 module.exports = (req, res, next) => {
-  const { error } = schema.validate({ value: req.body });
+  const { error } = schema.validate(req.body);
 
   if (error) {
     const [code, message] = error.message.split('|');
