@@ -1,4 +1,5 @@
 const productsModels = require('../models/products.models');
+const productsServices = require('../services/products.services');
 
 const getAll = async (_req, res) => {
   const products = await productsModels.getAll();
@@ -14,7 +15,18 @@ const getById = async (req, res) => {
   return res.status(200).json(product[0]);
 };
 
+const create = async (req, res) => {
+  const { name, quantity } = req.body;
+
+  const { code, product } = await productsServices.create(name, quantity);
+
+  if (code === 409) return res.status(code).json({ message: 'Product already exists' });
+
+  return res.status(code).json(product);
+};
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
