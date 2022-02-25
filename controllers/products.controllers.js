@@ -17,10 +17,9 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
   const { name, quantity } = req.body;
+  const { code, product, message } = await productsServices.create(name, quantity);
 
-  const { code, product } = await productsServices.create(name, quantity);
-
-  if (code === 409) return res.status(code).json({ message: 'Product already exists' });
+  if (!product) return res.status(code).json({ message });
 
   return res.status(code).json(product);
 };
