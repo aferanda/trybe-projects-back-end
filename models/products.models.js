@@ -21,12 +21,7 @@ const findByName = async (name) => {
 const create = async (name, quantity) => {
   const SQL = 'INSERT INTO StoreManager.products (name, quantity) VALUES (?, ?)';
   const [product] = await DB.execute(SQL, [name, quantity]);
-
-  return {
-    id: product.insertId,
-    name,
-    quantity,
-  };
+  return product;
 };
 
 const update = async (name, quantity, id) => {

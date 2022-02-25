@@ -6,8 +6,15 @@ const create = async (name, quantity) => {
 
   if (nameExists) return { code: 409, message: 'Product already exists' };
 
-  const createProduct = await productsModels.create(name, quantity);
-  return { code: 201, product: createProduct };
+  const created = await productsModels.create(name, quantity);
+
+  const createdProduct = {
+    id: created.insertId,
+    name,
+    quantity,
+  };
+
+  return { code: 201, product: createdProduct };
 };
 
 const update = async (name, quantity, id) => {
