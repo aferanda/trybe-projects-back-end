@@ -10,6 +10,6 @@ router.get('/:id', productsControllers.getById);
 
 router.post('/', productsMiddleware, productsControllers.create);
 
-router.put('/', productsMiddleware, () => {});
+router.put('/:id', productsMiddleware, productsControllers.update);
 
 module.exports = router;
