@@ -23,7 +23,9 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
   const { id } = req.params;
-  const { code, response } = await salesServices.update(req.body, id);
+  const { code, response, message } = await salesServices.update(req.body, id);
+
+  if (message) return res.status(code).json({ message });
 
   return res.status(code).json(response);
 };

@@ -11,9 +11,12 @@ const create = async (itemsSold) => {
 };
 
 const update = async (itemUpdated, saleId) => {
-  itemUpdated.forEach(async (e) => {
-    await salesModels.update(e.productId, e.quantity, saleId);
-  });
+  const [sale] = itemUpdated;
+  const { productId, quantity } = sale;
+
+  const result = await salesModels.update(productId, quantity, saleId);
+
+  if (!result.affectedRows) return { code: 404, message: 'Sale/Product not found' };
 
   return { code: 200, response: { saleId, itemUpdated } };
 };
