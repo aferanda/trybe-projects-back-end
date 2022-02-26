@@ -10,6 +10,15 @@ const create = async (itemsSold) => {
   return { code: 201, response: { id, itemsSold } };
 };
 
+const update = async (itemUpdated, saleId) => {
+  itemUpdated.forEach(async (e) => {
+    await salesModels.update(e.productId, e.quantity, saleId);
+  });
+
+  return { code: 200, response: { saleId, itemUpdated } };
+};
+
 module.exports = {
   create,
+  update,
 };
