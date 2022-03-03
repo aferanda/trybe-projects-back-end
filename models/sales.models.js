@@ -44,7 +44,7 @@ const update = async (productId, quantity, id) => {
 const remove = async (id) => {
   const SQL = `DELETE SProd.*, S.* FROM StoreManager.sales_products AS SProd
               INNER JOIN StoreManager.sales AS S ON SProd.sale_id = S.id
-              WHERE sale_id = ?`;
+              WHERE SProd.sale_id = ?`;
   const [sale] = await DB.execute(SQL, [id]);
   return sale;
 };
