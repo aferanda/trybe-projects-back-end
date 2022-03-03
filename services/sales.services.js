@@ -21,7 +21,16 @@ const update = async (itemUpdated, saleId) => {
   return { code: 200, response: { saleId, itemUpdated } };
 };
 
+const remove = async (id) => {
+  const removed = await salesModels.remove(id);
+
+  if (!removed.affectedRows) return { code: 404, message: 'Sale not found' };
+
+  return { code: 204 };
+};
+
 module.exports = {
   create,
   update,
+  remove,
 };
