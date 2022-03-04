@@ -22,7 +22,7 @@ const update = async (name, quantity, id) => {
 
   if (product.length === 0) return { code: 404, message: 'Product not found' };
 
-  await productsModels.update(name, quantity, id);
+  await productsModels.updateByName(name, quantity, id);
   return { code: 200, product: { id, name, quantity } };
 };
 
