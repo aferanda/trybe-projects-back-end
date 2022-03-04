@@ -9,7 +9,7 @@ const create = async (itemsSold) => {
     return item.quantity - i.quantity;
   }));
 
-  if (inventory.some((i) => i <= 0)) {
+  if (inventory.some((i) => i < 0)) {
     return { code: 422, message: 'Such amount is not permitted to sell' };
   }
 
@@ -38,14 +38,12 @@ const remove = async (id) => {
 
   if (!removed.affectedRows) return { code: 404, message: 'Sale not found' };
 
-  const inventory = await Promise.all(sale.map(async (i) => {
+  await Promise.all(sale.map(async (i) => {
     const [item] = await productsModels.getById(i.productId);
-    return item.quantity + i.quantity;
-  }));
+    const inventory = item.quantity + i.quantity;
 
-  sale.map(async (i, index) => {
-    await productsModels.updateById(inventory[index], i.productId);
-  });
+    await productsModels.updateById(inventory, i.productId);
+  }));
 
   return { code: 204 };
 };

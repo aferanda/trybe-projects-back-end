@@ -44,6 +44,10 @@ const update = async (productId, quantity, id) => {
 const remove = async (id) => {
   const SQL = 'DELETE FROM StoreManager.sales_products WHERE sale_id = ?';
   const [sale] = await DB.execute(SQL, [id]);
+
+  const SQLSale = 'DELETE FROM StoreManager.sales WHERE id = ?';
+  await DB.execute(SQLSale, [id]);
+
   return sale;
 };
 
