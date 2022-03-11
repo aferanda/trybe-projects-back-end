@@ -31,7 +31,6 @@ module.exports = (sequelize) => {
     'User',
     Attributes,
     {
-      underscored: true,
       timestamps: false,
       tableName: 'Users',
     },
