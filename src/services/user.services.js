@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const jwtGenerator = require('../helpers/jwtGenerator');
 
 const createUser = async ({ displayName, email, password, image }) => {
   const user = await User.findOne({ where: { email } });
@@ -7,7 +8,9 @@ const createUser = async ({ displayName, email, password, image }) => {
 
   const newUser = await User.create({ displayName, email, password, image });
 
-  return { code: 201, newUser };
+  const token = jwtGenerator({ id: newUser.id, displayName });
+
+  return { code: 201, token };
 };
 
 module.exports = {
