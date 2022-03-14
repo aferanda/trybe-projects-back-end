@@ -1,4 +1,4 @@
-const { BlogPost } = require('../models');
+const { BlogPost, User, Category, PostCategory } = require('../models');
 const { getAllCategories } = require('./category.services');
 
 const createPost = async (body, id) => {
@@ -11,7 +11,9 @@ const createPost = async (body, id) => {
 
   if (!checkCategories) return { code: 400, message: '"categoryIds" not found' };
 
-  const createdPost = await BlogPost.create({ userId: id, title, content });
+  const createdPost = await BlogPost.create({ userId: id, title, content, categoryIds });
+
+  await categoryIds.map((tag) => PostCategory.create({ postId: createdPost.id, categoryId: tag }));
 
   const newPost = {
     id: createdPost.id,
