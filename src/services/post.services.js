@@ -63,8 +63,19 @@ const getPostById = async (id) => {
   return { code: 200, post };
 };
 
+const updatePost = async (postId, userId, title, content) => {
+  const { post } = await getPostById(postId);
+
+  if (post.userId !== userId) return { code: 401, message: 'Unauthorized user' };
+
+  await post.update({ title, content });
+
+  return { code: 200, post };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
+  updatePost,
 };
