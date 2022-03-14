@@ -19,10 +19,10 @@ const Attributes = {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  createdAt: {
+  published: {
     type: DataTypes.DATE,
   },
-  updatedAt: {
+  updated: {
     type: DataTypes.DATE,
   },
 };
