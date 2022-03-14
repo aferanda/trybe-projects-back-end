@@ -29,11 +29,12 @@ const updatePost = async (req, res) => {
   const { id: userId } = req.tokenData;
   const { title, content } = req.body;
 
-  const { code, message, post } = await postServices.updatePost(postId, userId, title, content);
+  const { code, message, updatedPost } = await postServices
+    .updatePost(postId, userId, title, content);
 
   if (message) return res.status(code).json({ message });
 
-  return res.status(code).json(post);
+  return res.status(code).json(updatedPost);
 };
 
 module.exports = {

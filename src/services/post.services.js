@@ -70,7 +70,14 @@ const updatePost = async (postId, userId, title, content) => {
 
   await post.update({ title, content });
 
-  return { code: 200, post };
+  const updatedPost = {
+    title: post.title,
+    content: post.content,
+    userId: post.userId,
+    categories: post.categories,
+  };
+
+  return { code: 200, updatedPost };
 };
 
 module.exports = {
