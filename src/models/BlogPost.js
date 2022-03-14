@@ -19,6 +19,12 @@ const Attributes = {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  createdAt: {
+    type: DataTypes.DATE,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+  },
 };
 
 module.exports = (sequelize) => {
@@ -26,7 +32,10 @@ module.exports = (sequelize) => {
     'BlogPost',
     Attributes,
     {
+      timestamps: true,
       tableName: 'BlogPosts',
+      createdAt: 'published',
+      updatedAt: 'updated',
     },
   );
 

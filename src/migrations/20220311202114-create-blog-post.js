@@ -27,16 +27,16 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         field: 'published',
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         field: 'updated',
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
