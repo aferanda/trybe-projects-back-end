@@ -11,8 +11,10 @@ const {
 const router = express.Router();
 
 router.post('/', userMiddleware, createUser);
+
 router.get('/', authMiddleware, getAllUsers);
 router.get('/:id', authMiddleware, getUserById);
+
 router.delete('/me', authMiddleware, deleteUser);
 
 module.exports = router;

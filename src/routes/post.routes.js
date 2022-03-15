@@ -14,9 +14,12 @@ const router = express.Router();
 
 router.post('/', authMiddleware, postMiddleware, createPost);
 router.post('/:id');
+
 router.get('/', authMiddleware, getAllPosts);
 router.get('/:id', authMiddleware, getPostById);
+
 router.put('/:id', authMiddleware, updatePostMiddleware, updatePost);
+
 router.delete('/:id', authMiddleware, deletePost);
 
 module.exports = router;

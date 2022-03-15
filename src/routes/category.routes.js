@@ -6,6 +6,7 @@ const authMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 router.post('/', authMiddleware, categoryMiddleware, createCategory);
+
 router.get('/', authMiddleware, getAllCategories);
 
 module.exports = router;
