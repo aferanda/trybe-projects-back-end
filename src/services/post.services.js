@@ -1,3 +1,5 @@
+const { Op } = require('sequelize');
+
 const { BlogPost, User, Category, PostCategory } = require('../models');
 const { getAllCategories } = require('./category.services');
 
@@ -92,10 +94,31 @@ const deletePost = async (postId, userId) => {
   return { code: 204 };
 };
 
+const searchPost = async (queryParam) => {
+  if (!queryParam) {
+    const { code, posts } = await getAllPosts();
+    return { code, posts };
+  }
+
+  const posts = await BlogPost.findAll({
+    where: { [Op.or]: [
+        { title: { [Op.like]: `%${queryParam}%` } },
+        { content: { [Op.like]: `%${queryParam}%` } },
+      ],
+    },
+    attributes: { exclude: ['UserId'] },
+    include: [{ model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] },
+    { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+
+  return { code: 200, posts };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   updatePost,
   deletePost,
+  searchPost,
 };
