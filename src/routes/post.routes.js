@@ -8,6 +8,7 @@ const {
   getPostById,
   updatePost,
   deletePost,
+  searchPost,
 } = require('../controllers/post.controllers');
 
 const router = express.Router();
@@ -16,6 +17,7 @@ router.post('/', authMiddleware, postMiddleware, createPost);
 router.post('/:id');
 
 router.get('/', authMiddleware, getAllPosts);
+router.get('/search', authMiddleware, searchPost);
 router.get('/:id', authMiddleware, getPostById);
 
 router.put('/:id', authMiddleware, updatePostMiddleware, updatePost);
