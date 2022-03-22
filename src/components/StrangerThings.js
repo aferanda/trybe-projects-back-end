@@ -116,7 +116,8 @@ class StrangerThings extends React.Component {
         )}` }
       >
         <div className="content strangerfy">
-          { isHomolog && <h2 style={{ color: "red" }}>Em desenvolvimento</h2> }
+          { isHomolog
+            && <h2 style={{ color: "red", backgroundColor: "white" }}>Em desenvolvimento</h2> }
           <div className="change-reality">
             <button type="button" onClick={ this.changeRealityClick }>
               {' '}
