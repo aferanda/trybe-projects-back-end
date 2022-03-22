@@ -108,7 +108,7 @@ class StrangerThings extends React.Component {
     const {
       hereIsTheUpsideDownWorld, characterName, characters, page,
     } = this.state;
-    const homolog = process.env.REACT_APP_DEVELOPER;
+    const isHomolog = JSON.parse(process.env.REACT_APP_DEVELOPER);
     return (
       <div
         className={ `reality ${getRealityClass(
@@ -116,7 +116,7 @@ class StrangerThings extends React.Component {
         )}` }
       >
         <div className="content strangerfy">
-          { homolog && <h2>Em desenvolvimento</h2> }
+          { isHomolog && <h2 style={{ color: "red" }}>Em desenvolvimento</h2> }
           <div className="change-reality">
             <button type="button" onClick={ this.changeRealityClick }>
               {' '}
