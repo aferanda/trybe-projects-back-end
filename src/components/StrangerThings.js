@@ -20,6 +20,8 @@ const upsideDownConfig = {
 const charactersService = new CharactersService(strangerThingsConfig);
 const charactersUpsideDownService = new CharactersService(upsideDownConfig);
 
+const isHomolog = JSON.parse(process.env.REACT_APP_DEVELOPER);
+
 class StrangerThings extends React.Component {
   constructor(props) {
     super(props);
@@ -108,7 +110,6 @@ class StrangerThings extends React.Component {
     const {
       hereIsTheUpsideDownWorld, characterName, characters, page,
     } = this.state;
-    const isHomolog = JSON.parse(process.env.REACT_APP_DEVELOPER);
     return (
       <div
         className={ `reality ${getRealityClass(
@@ -116,8 +117,11 @@ class StrangerThings extends React.Component {
         )}` }
       >
         <div className="content strangerfy">
-          { isHomolog
-            && <h2 style={{ color: "red", backgroundColor: "white" }}>Em desenvolvimento</h2> }
+          { isHomolog && (
+            <h2 style={ { color: 'red', backgroundColor: 'white' } }>
+              Em desenvolvimento
+            </h2>
+          ) }
           <div className="change-reality">
             <button type="button" onClick={ this.changeRealityClick }>
               {' '}
