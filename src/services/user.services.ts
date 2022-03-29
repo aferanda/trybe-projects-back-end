@@ -1,5 +1,5 @@
 import jwtGenerator from '../helpers/jwtGenerator';
-import { IUser } from '../interfaces/interfaces';
+import { IUser, ILogin } from '../interfaces/interfaces';
 import prisma from '../models/prismaClient';
 
 class UserService {
@@ -11,6 +11,21 @@ class UserService {
     const token = jwtGenerator(newUser);
 
     return { code: 201, token };
+  };
+
+  login = async (credentials: ILogin) => {
+    const { username, password } = credentials;
+    const user = await prisma.user.findFirst({
+      where: { username },
+    });
+
+    if (!user || user.password !== password) {
+      return { code: 401, error: 'Username or password invalid' };
+    }
+
+    const token = jwtGenerator(user);
+
+    return { code: 200, token };
   };
 }
 
