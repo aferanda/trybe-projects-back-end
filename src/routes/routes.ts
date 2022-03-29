@@ -1,18 +1,38 @@
 import { Router } from 'express';
 import middlewares from '../middlewares';
-import productControllers from '../controllers/product.controllers';
-import userControllers from '../controllers/user.controllers';
-import orderControllers from '../controllers/order.controllers';
+import controllers from '../controllers';
 
 const routes = Router();
 
-const { productMiddleware, userMiddleware } = middlewares;
+const { productMiddleware, userMiddleware, loginMiddleware } = middlewares;
+const { productControllers, userControllers, orderControllers } = controllers;
 
-routes.get('/products', productControllers.getAllProducts);
-routes.post('/products', productMiddleware, productControllers.createProduct);
+routes.get(
+  '/products',
+  productControllers.getAllProducts,
+);
 
-routes.post('/users', userMiddleware, userControllers.createUser);
+routes.post(
+  '/products',
+  productMiddleware,
+  productControllers.createProduct,
+);
 
-routes.get('/orders', orderControllers.getAllOrders);
+routes.post(
+  '/users',
+  userMiddleware,
+  userControllers.createUser,
+);
+
+routes.get(
+  '/orders',
+  orderControllers.getAllOrders,
+);
+
+routes.post(
+  '/login',
+  loginMiddleware,
+  userControllers.login,
+);
 
 export default routes;
